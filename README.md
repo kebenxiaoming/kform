@@ -35,6 +35,7 @@ A simple form submission plugin that supports data saving and exporting.
 
 1. Upload the plugin files to the `/wp-content/plugins/kform` directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. The shortcode is [kuai_form],you can reference it anywhere you want to use
 
 == Upgrade Notice ==
 
