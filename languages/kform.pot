@@ -1,0 +1,66 @@
+# Translation of Plugins - KForm
+# This file is distributed under the same license as the Plugins - KForm.
+#: includes/admin/class-admin-table-list.php:22
+#: includes/admin/class-admin-table-list.php:77
+msgid "Phone"
+msgstr ""
+
+#: includes/admin/class-menu.php:31
+msgid "KForm"
+msgstr ""
+
+#: public/class-kform-public:77
+msgid "Incorrect request method"
+msgstr ""
+
+#: public/class-kform-public:86
+msgid "Please do not resubmit"
+msgstr ""
+
+#: public/class-kform-public:95
+msgid "save successful"
+msgstr ""
+
+#: public/class-kform-public:98
+msgid "save fail"
+msgstr ""
+
+#: public/class-kform-public:115
+msgid "Request data is empty"
+msgstr ""
+
+#: public/class-kform-public:119
+msgid "Please enter a title"
+msgstr ""
+
+#: public/class-kform-public:125
+msgid "The title should be at least two characters long"
+msgstr ""
+
+#: public/class-kform-public:130
+msgid "The maximum title can only be 200 characters"
+msgstr ""
+
+#: public/class-kform-public:138
+msgid "Please enter your email or phone number"
+msgstr ""
+
+#: public/class-kform-public:145
+msgid "Incorrect email format"
+msgstr ""
+
+#: public/class-kform-public:153
+msgid "Incorrect phone format"
+msgstr ""
+
+#: public/class-kform-public:160
+msgid "Please enter the content"
+msgstr ""
+
+#: public/class-kform-public:166
+msgid "The content should be at least five characters long"
+msgstr ""
+
+#: public/class-kform-public:171
+msgid "The maximum content can only be 500 characters"
+msgstr ""

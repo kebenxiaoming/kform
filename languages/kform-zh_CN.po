@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.1\n"
+
+# Translation of Plugins - KForm
+# This file is distributed under the same license as the Plugins - KForm.
+#: includes/admin/class-admin-table-list.php:22
+#: includes/admin/class-admin-table-list.php:77
+msgid "Phone"
+msgstr "电话"
+
+#: includes/admin/class-menu.php:31
+msgid "KForm"
+msgstr "快表单"
+
+#: public/class-kform-public:77
+msgid "Incorrect request method"
+msgstr "请求方式不正确"
+
+#: public/class-kform-public:86
+msgid "Please do not resubmit"
+msgstr "请勿重复提交"
+
+#: public/class-kform-public:95
+msgid "save successful"
+msgstr "保存成功"
+
+#: public/class-kform-public:98
+msgid "save fail"
+msgstr "保存失败"
+
+#: public/class-kform-public:115
+msgid "Request data is empty"
+msgstr "请求数据为空"
+
+#: public/class-kform-public:119
+msgid "Please enter a title"
+msgstr "请输入一个标题"
+
+#: public/class-kform-public:125
+msgid "The title should be at least two characters long"
+msgstr "标题长度至少为2个字符"
+
+#: public/class-kform-public:130
+msgid "The maximum title can only be 200 characters"
+msgstr "标题最多只能有 200 个字符"
+
+#: public/class-kform-public:138
+msgid "Please enter your email or phone number"
+msgstr "请输入您的邮箱或电话"
+
+#: public/class-kform-public:145
+msgid "Incorrect email format"
+msgstr "邮箱格式不正确"
+
+#: public/class-kform-public:153
+msgid "Incorrect phone format"
+msgstr "电话格式不正确"
+
+#: public/class-kform-public:160
+msgid "Please enter the content"
+msgstr "请输入内容"
+
+#: public/class-kform-public:166
+msgid "The content should be at least five characters long"
+msgstr "内容长度至少为5个字符"
+
+#: public/class-kform-public:171
+msgid "The maximum content can only be 500 characters"
+msgstr "内容最多只能有 500 个字符"

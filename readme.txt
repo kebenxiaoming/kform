@@ -1,21 +1,11 @@
-# kform
-
 === Kuai Form ===
-
 Contributors: kebenxiaoming
-
 Tags:  form,kuai form,forms, contact form, custom form, form builder
-
 Requires at least: 4.7
-
 Tested up to: 6.4.1
-
 Stable tag: 1.0.0
-
 Requires PHP: 5.6+
-
 License: GPLv3
-
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Simple Contact form for WordPress.
