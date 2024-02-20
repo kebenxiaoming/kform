@@ -24,11 +24,9 @@ class KForm_Export
     public static function export($head_data,$data = array(),$file_name='')
     {
         ob_clean();
-        set_time_limit(0);
-        ini_set('memory_limit', '256M');
         //download csv filename
         if(empty($fileName)){
-            $file_name = __kform_lang("KForm",'kform').time();
+            $file_name = kform_lang("KForm").time();
         }
         $fileName = $file_name.'.csv';
         //set header

@@ -9,7 +9,7 @@
  * @subpackage kform/includes
  * @author     kebenxiaoming <kebenxiaoming@gmail.com>
  */
-if ( ! function_exists( '__kform_lang' ) )
+if ( ! function_exists( 'kform_lang' ) )
 {
     /**
      * @param string $str
@@ -21,8 +21,8 @@ if ( ! function_exists( '__kform_lang' ) )
      * Date:2023-11-29 14:23
      * @since:1.0.0
      */
-    function __kform_lang($str='',$domain='default')
+    function kform_lang($str='')
     {
-        return __($str,$domain);
+        return __($str,'kform');
     }
 }

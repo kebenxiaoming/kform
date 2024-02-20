@@ -28,7 +28,7 @@ class KForm_Admin_Menu {
 		//kform menu.
         add_menu_page(
             'KForm',
-            __kform_lang('KForm','kform'),
+            kform_lang('KForm'),
             'manage_options',
             'kform',
             [$this,'admin_page'],

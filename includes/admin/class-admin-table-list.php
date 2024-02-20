@@ -5,9 +5,8 @@ if(!defined('ABSPATH'))
 if(!is_admin())
     die('Forbidden');
 
-if (isset($_GET['action'])&&in_array(strtolower(strval($_GET['action'])),['export','add','clone','edit','upload','delete'])) {
-    $action=strval($_GET['action']);
-}else{
+$action=sanitize_text_field($_GET['action']);
+if (!in_array(strtolower($action),['export','add','clone','edit','upload','delete'])) {
     $action="";
 }
 if($action=='export'){
@@ -16,12 +15,12 @@ if($action=='export'){
     $export_saved_forms=$wpdb
         ->get_results("SELECT kform_data_id,title,email,phone,content,create_time FROM ".KFORM_TABLE_NAME);
     $head_data=array(
-        __kform_lang('ID'),
-        __kform_lang('Title'),
-        __kform_lang('Email'),
-        __kform_lang('Phone','kform'),
-        __kform_lang('Content'),
-        __kform_lang('Time'),
+        kform_lang('ID'),
+        kform_lang('Title'),
+        kform_lang('Email'),
+        kform_lang('Phone'),
+        kform_lang('Content'),
+        kform_lang('Time'),
     );
     $export_data = array();
     foreach($export_saved_forms as $export_form)
@@ -41,8 +40,8 @@ if($action=='export'){
 }
 //show page title
 $page='kform';
-echo "<div class='wrap'><h1 class='wp-heading-inline'>".__kform_lang("KForm",'kform')."</h1>";
-echo sprintf(' <a href="?page=%s&action=%s" class="page-title-action" >'.__("Export").'</a>',esc_attr($page),'export');
+echo "<div class='wrap'><h1 class='wp-heading-inline'>".kform_lang("KForm")."</h1>";
+echo sprintf(' <a href="?page=%s&action=%s" class="page-title-action" >'.kform_lang("Export").'</a>',esc_attr($page),'export');
 ?>
 </div>
 <?php
@@ -71,12 +70,12 @@ class KForm_Admin_Table_List extends WP_List_Table
     function get_columns()
     {
         return array(
-            'kform_data_id'=>__kform_lang('ID'),
-            'title'=>__kform_lang('Title'),
-            'email'=>__kform_lang('Email'),
-            'phone'=>__kform_lang('Phone','kform'),
-            'content'=>__kform_lang('Content'),
-            'create_time'=>__kform_lang('Time'),
+            'kform_data_id'=>kform_lang('ID'),
+            'title'=>kform_lang('Title'),
+            'email'=>kform_lang('Email'),
+            'phone'=>kform_lang('Phone'),
+            'content'=>kform_lang('Content'),
+            'create_time'=>kform_lang('Time'),
         );
     }
 
@@ -172,19 +171,19 @@ class KForm_Admin_Table_List extends WP_List_Table
 
             if ( 'cb' === $column_name ) {
                 echo '<th scope="row" class="check-column">';
-                echo $this->column_cb( $item );
+                echo esc_html($this->column_cb( $item ));
                 echo '</th>';
             } elseif ( method_exists( $this, '_column_' . $column_name ) ) {
-                echo call_user_func(
+                echo esc_html(call_user_func(
                     array( $this, '_column_' . $column_name ),
                     $item,
                     $classes,
                     $data,
                     $primary
-                );
+                ));
             } elseif ( method_exists( $this, 'column_' . $column_name ) ) {
-                echo "<td $attributes>";
-                echo call_user_func( array( $this, 'column_' . $column_name ), $item );
+                echo "<td ".esc_html($attributes).">";
+                echo esc_html(call_user_func( array( $this, 'column_' . $column_name ), $item ));
                 echo $this->handle_row_actions( $item, $column_name, $primary );
                 echo '</td>';
             } else {

@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * The public-facing functionality of the plugin.
  *
@@ -74,16 +75,21 @@ class KForm_Public
         check_ajax_referer( 'kform_submit_form_info' );
         //deal form data
         if(!wp_doing_ajax()){
-            echo wp_json_encode( ['status'=>0,'msg'=>__kform_lang('Incorrect request method','kform')]);
+            echo wp_json_encode( ['status'=>0,'msg'=>kform_lang('Incorrect request method')]);
         }
-        $formData = $_POST;
+        $formData = array(
+            'title'=>sanitize_text_field(wp_unslash($POST['title'])),
+            'email'=>sanitize_text_field(wp_unslash($POST['email'])),
+            'phone'=>sanitize_text_field(wp_unslash($POST['phone'])),
+            'content'=>sanitize_text_field(wp_unslash($POST['content'])),
+        );
         $result_data = $this->validate_form_data($formData);
         //data hash
         $data_hash = md5(json_encode($result_data));
         global $wpdb;
         if($exist_data = $wpdb
             ->get_var("SELECT * FROM ".KFORM_TABLE_NAME." WHERE data_hash = '$data_hash'")){
-            echo wp_json_encode(['status' => 0, 'msg' => __kform_lang('Please do not resubmit', 'kform')]);
+            echo wp_json_encode(['status' => 0, 'msg' => kform_lang('Please do not resubmit')]);
             wp_die();
         }
         //Check if the data already exists
@@ -92,10 +98,10 @@ class KForm_Public
         //save data
         $result = $wpdb->insert(KFORM_TABLE_NAME, $result_data);
         if ($result) {
-            echo wp_json_encode(['status' => 1, 'msg' => __kform_lang('save successful', 'kform')]);
+            echo wp_json_encode(['status' => 1, 'msg' => kform_lang('save successful')]);
         } else {
             ob_clean();
-            echo wp_json_encode(['status' => 0, 'msg' => __kform_lang('save fail', 'kform')]);
+            echo wp_json_encode(['status' => 0, 'msg' => kform_lang('save fail')]);
         }
         wp_die();
     }
@@ -112,22 +118,22 @@ class KForm_Public
     public function validate_form_data($data = array())
     {
         if(empty($data)){
-            echo wp_json_encode( ['status'=>0,'msg'=>__kform_lang('Request data is empty','kform')]);
+            echo wp_json_encode( ['status'=>0,'msg'=>kform_lang('Request data is empty')]);
             wp_die();
         }
         if(empty($data['title'])){
-            echo wp_json_encode( ['status'=>0,'msg'=>__kform_lang('Please enter a title','kform')]);
+            echo wp_json_encode( ['status'=>0,'msg'=>kform_lang('Please enter a title')]);
             wp_die();
         }else{
-            $title = sanitize_text_field(wp_unslash($data['title']));
+            $title = $data['title'];
             if(mb_strlen($title,'UTF-8')<2){
                 echo wp_json_encode( ['status'=>0,
-                    'msg'=>__kform_lang('The title should be at least two characters long','kform')]);
+                    'msg'=>kform_lang('The title should be at least two characters long')]);
                 wp_die();
             }
             if(mb_strlen($title,'UTF-8')>200){
                 echo wp_json_encode( ['status'=>0,
-                    'msg'=>__kform_lang('The maximum title can only be 200 characters','kform')]);
+                    'msg'=>kform_lang('The maximum title can only be 200 characters')]);
                 wp_die();
             }
         }
@@ -135,40 +141,40 @@ class KForm_Public
         $phone='';
         if(empty($data['email'])&&empty($data['phone'])){
             echo wp_json_encode( ['status'=>0,
-                'msg'=>__kform_lang('Please enter your email or phone number','kform')]);
+                'msg'=>kform_lang('Please enter your email or phone number')]);
             wp_die();
         }else {
             if (!empty($data['email'])) {
-                $email = sanitize_text_field(wp_unslash($data['email']));
+                $email = $data['email'];
                 if (!is_email($email)) {
                     echo wp_json_encode(['status' => 0, 'msg' =>
-                        __kform_lang('Incorrect email format','kform')]);
+                        kform_lang('Incorrect email format')]);
                     wp_die();
                 }
             }
             if (!empty($data['phone'])) {
-                $phone = sanitize_text_field(wp_unslash($data['phone']));
+                $phone = $data['phone'];
                 if (mb_strlen($phone, 'UTF-8') < 3||mb_strlen($phone, 'UTF-8') > 100) {
                     echo wp_json_encode(['status' => 0,
-                        'msg' => __kform_lang('Incorrect phone format','kform')]);
+                        'msg' => kform_lang('Incorrect phone format')]);
                     wp_die();
                 }
             }
         }
         if(empty($data['content'])){
             echo wp_json_encode( ['status'=>0,
-                'msg'=>__kform_lang('Please enter the content','kform')]);
+                'msg'=>kform_lang('Please enter the content')]);
             wp_die();
         }else{
-            $content = sanitize_text_field(wp_unslash($data['content']));
+            $content = $data['content'];
             if(mb_strlen($content,'UTF-8')<5){
                 echo wp_json_encode( ['status'=>0,
-                    'msg'=>__kform_lang('The content should be at least five characters long','kform')]);
+                    'msg'=>kform_lang('The content should be at least five characters long')]);
                 wp_die();
             }
             if(mb_strlen($content,'UTF-8')>500){
                 echo wp_json_encode( ['status'=>0,
-                    'msg'=>__kform_lang('The maximum content can only be 500 characters','kform')]);
+                    'msg'=>kform_lang('The maximum content can only be 500 characters')]);
                 wp_die();
             }
         }

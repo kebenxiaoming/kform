@@ -25,7 +25,7 @@ class KForm_Shortcode
      */
     public function __construct($public_controller)
     {
-        add_shortcode( 'kuai_form', array( $this, 'kform_submit_info' ) );
+        add_shortcode( 'kform_form', array( $this, 'kform_submit_info' ) );
         $this->public_controller = $public_controller;
     }
 

@@ -113,7 +113,7 @@ function kform()
  * Date:2023-11-29 17:01
  * @since:1.0.0
  */
-function run_kform()
+function kform_run()
 {
     kform()->run();
 }
@@ -122,4 +122,4 @@ function run_kform()
  * run kform plugin.
  * @since:1.0.0
  */
-run_kform();
+kform_run();

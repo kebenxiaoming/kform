@@ -60,8 +60,8 @@ class KForm
 	 */
 	public function __construct()
     {
-		if ( defined( 'PLUGIN_NAME_VERSION' ) ) {
-			$this->version = PLUGIN_NAME_VERSION;
+		if ( defined( 'KFORM_PLUGIN_NAME_VERSION' ) ) {
+			$this->version = KFORM_PLUGIN_NAME_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}

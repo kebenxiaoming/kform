@@ -11,7 +11,7 @@ if(!defined('ABSPATH'))
 global $wpdb;
 define('KFORM_NAME','WordPress Kuai Form' );
 define('KFORM_PLUGIN_NAME','kform' );
-define('PLUGIN_NAME_VERSION', '1.0.0' );
+define('KFORM_PLUGIN_NAME_VERSION', '1.0.0' );
 define('KFORM_DIR',WP_PLUGIN_DIR.'/'.KFORM_PLUGIN_NAME.'/');
 define('KFORM_DIR_URL',plugin_dir_url(dirname(__FILE__)));
 define('KFORM_ADMIN_DIR_URL',plugin_dir_url(dirname(__FILE__)).'/admin/');
